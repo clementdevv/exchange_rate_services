@@ -1,8 +1,0 @@
-### Test status endpoint
-GET http://localhost:8081/status
-Accept: application/json
-
-### 
-GET http://localhost:8081/test-api
-Accept: application/json
-

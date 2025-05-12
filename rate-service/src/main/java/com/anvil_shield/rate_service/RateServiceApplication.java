@@ -1,13 +1,14 @@
-package com.clementdevv.main_service;
+package com.anvil_shield.rate_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
-public class MainServiceApplication {
+public class RateServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MainServiceApplication.class, args);
+		SpringApplication.run(RateServiceApplication.class, args);
 	}
 
 }

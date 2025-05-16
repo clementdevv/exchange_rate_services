@@ -1,0 +1,12 @@
+com\anvil_shield\rate_service\security\ApiKeyAuthFilter.class
+com\anvil_shield\rate_service\io\ErrorResponse.class
+com\anvil_shield\rate_service\config\RateExchangeServiceWebClientConfig.class
+com\anvil_shield\rate_service\exception\GlobalExceptionHandler.class
+com\anvil_shield\rate_service\io\ErrorResponse$ApiError.class
+com\anvil_shield\rate_service\io\ExchangeRateResponse.class
+com\anvil_shield\rate_service\config\SecurityConfig.class
+com\anvil_shield\rate_service\controller\StatusController.class
+com\anvil_shield\rate_service\RateServiceApplication.class
+com\anvil_shield\rate_service\controller\RateController.class
+com\anvil_shield\rate_service\exception\ExternalApiException.class
+com\anvil_shield\rate_service\service\RateExchangeService.class

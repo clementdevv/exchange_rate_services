@@ -1,0 +1,41 @@
+services:
+  postgres-db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: exchangeratedb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
+
+  rate-service:
+    build:
+      context: ./rate-service
+    image: clementdevv/exchange-rate-services:rate-service
+    ports:
+      - "8081:8081"
+    depends_on: []
+    env_file:
+      - ./rate-service/.env
+    networks:
+      - backend
+
+  main-service:
+    build:
+      context: ./main-service
+    image: clementdevv/exchange-rate-services:main-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - rate-service
+      - postgres-db
+    env_file:
+      - ./main-service/.env
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

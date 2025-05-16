@@ -3,8 +3,8 @@ FROM eclipse-temurin:17-jdk-jammy
 
 WORKDIR /app
 
-COPY target/rate-service-*.jar app.jar
+COPY target/rate-service-0.0.1-SNAPSHOT.jar app.jar
 
-EXPOSE 8081  # Different port from main service
+EXPOSE 8081
 
 ENTRYPOINT ["java", "-jar", "app.jar"]

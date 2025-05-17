@@ -19,8 +19,10 @@ import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
 
 @WebMvcTest(AuthController.class)
 @AutoConfigureMockMvc(addFilters = false) // This is to disable Spring security
@@ -28,16 +30,16 @@ public class AuthControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @MockBean
+    @MockitoBean
     private AuthenticationManager authenticationManager;
 
-    @MockBean
+    @MockitoBean
     private AppUserDetailsService appUserDetailsService;
 
-    @MockBean
+    @MockitoBean
     private JwtUtil jwtUtil;
 
-    @MockBean
+    @MockitoBean
     private ProfileService profileService;
 
     @Test

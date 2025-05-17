@@ -5,16 +5,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class AlreadyExistsExceptionTest {
-
+public class ResourceNotFoundExceptionTest {
     @Test
-    @DisplayName("Should create AlreadyExistsException with correct message")
+    @DisplayName("Should create ResourceNotFoundException with correct message")
     void testConstructor() {
         // Arrange
-        String errorMessage = "User already exists";
+        String errorMessage = "Resource not found";
         
         // Act
-        AlreadyExistsException exception = new AlreadyExistsException(errorMessage);
+        ResourceNotFoundException exception = new ResourceNotFoundException(errorMessage);
         
         // Assert
         assertEquals(errorMessage, exception.getMessage());

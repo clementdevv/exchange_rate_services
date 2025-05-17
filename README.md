@@ -1,9 +1,61 @@
-# Currency Conversion Microservices
 
 # Exchange Rate Services
+### A Currency Conversion Microservices Project
 
-A Java Spring Boot-based microservices application that allows real-time currency conversion using exchange rates from Exchange Rates API, the API resource is available at https://exchangeratesapi.io/. It demonstrates inter-service communication, RESTful development, JDBC-based database persistence, and Docker-based deployment.
+This is a Java Spring Boot-based microservices application that allows real-time currency conversion using exchange rates from Exchange Rates API, the API resource is available at https://exchangeratesapi.io/. It demonstrates inter-service communication, RESTful development, JDBC-based database persistence, and Docker-based deployment.
 
+---
+
+## Project Set up and Testing Instructions instructions
+1. Before following these instructions, ensure you have a Github account set up already and Git installed in your machine.
+2. To set up the project, first clone the repository available at [exchange_rate_services](https://github.com/clementdevv/exchange_rate_services), by clicking the **Code** button on github, then copy the three provided urls to your clipboard. Below are the three urls:
+  - SSH: [Clone via SSH](git@github.com:ianshulx/Django-Projects-for-beginners.git)
+  - HTTPS: [Clone via https](https://github.com/ianshulx/Django-Projects-for-beginners.git)
+  - Github CLI: [](gh repo clone ianshulx/Django-Projects-for-beginners)
+3. Set up and create the folder you wish to clone your project in and then open your terminal while in that directory (that folder). Run the command: git clone [The url you copied](https://github.com/clementdevv/exchange_rate_services.git) and press enter. The one I've provided here is the **SSH url**. 
+4. Open the project in your favourite IDE, preferrably Intellij IDEA, then cd into the root project folder using the command:
+  ```
+   cd .\exchange_rate_services\
+  ```
+5. Below is the link to my .env file containing the project environment variables:
+   - [The .env project file](git)
+6. Click on Download to get the file. The file is the **.env** file to be added to the project root directory, (exchange_rate_services).
+- You will now be able to run the rate service followed by the main service successfully and test the endpoints via the postman workspace whose link is shared below:
+[Exchange Rate Services Workspace](https://karria-team.postman.co/workspace/My-Projects~239a85ae-f249-4dc9-9d4f-2e4d860054bb/request/36678553-611f9db0-e40c-4e47-883d-dc36e087a11f?action=share&creator=36678553&ctx=documentation&active-environment=36678553-5d19a35a-4feb-432c-bd9f-0b56dfa99648)
+
+---
+
+### Running the Application with Docker Compose
+- This project is fully containerized using **Docker and Docker Compose**.
+- Before moving on, ensure you have **Docker Desktop** installed on your machine and you have a **Dockerhub Account**.
+- Follow the steps below to build and run both services along with a **PostgreSQL database**:
+   1. First, run the command below when in the project root directory:
+      ```
+      - docker-compose up --build
+      ```
+- The command will:
+      - Build the rate-service and main-service Docker images.
+      - Spin up rate-service, main-service, and a PostgreSQL container.
+      - Automatically apply the schema.sql file (for conversions table) through volume mounting or startup script.
+   2. Once all containers are running, you can verify the services are up and running by moving on to the next section.
+   3. To stop all running containers, run:
+      ```
+      docker-compose down
+      ```
+**Key points to note:**
+- All configuration values (e.g., database credentials, ports, API base URLs) are externalized using the **.env** file.
+- You may inspect the **docker-compose.yml** and **Dockerfile** in each service folder for detailed setup.
+- **PostgreSQL** stores conversion records in the conversions table, created using schema.sql.
+
+### Postman Testing instructions
+- With both services running in your **IDE**, head over to the **Status folder** and test the GET request named **Rate Service Status**, which is the rate service.
+- Now test the main service status endpoint, which is the GET request named **Main Service Status**. These two status endpoints act as **health checks** for both services.
+- To test an endpoint, click the blue button indicated **"Send"**. To copy a token, under the Send button, look for a link written **"Authorization"**.
+- Click on it, then paste the token in the **Bearer token** section.
+- Head over to the Auth folder and use the **Register** endpoint to register then use the **User Login** endpoint to login as a registered user.
+- _**COPY THE TOKEN**_. 
+- In the Internal folder, Paste the copied token to test the **Fast Exchange Rates** endpoint. Do the same for the **Rate Exchange API** endpoint. 
+- Finally, head over to **Convert Currency** endpoint and copy the token there too. Test the endpoint to see the returned converted currency. 
 ---
 
 ## Attained Objective
@@ -83,44 +135,6 @@ The `main-service` handles user requests, manages authentication and authorizati
 4. `main-service` calculates the converted amount.
 5. Conversion details are saved to the `conversions` table in PostgreSQL.
 6. The conversion result is returned to the client.
-
----
-
-## Project Set up and Testing Instructions instructions
-Before following these instructions, ensure you have a Github account set up already and Git installed in your machine.
-To set up the project, first clone the repository available at [exchange_rate_services](https://github.com/clementdevv/exchange_rate_services), by clicking the "code" button on github, then copy the provided url to your clipboard, preferably via ssh or https or Github CLI. 
-Set up and create the folder you wish to clone your project in and then open your terminal while in that directory (that folder). Run the command: git clone [The url you copied](https://github.com/clementdevv/exchange_rate_services.git) and press enter. The one I've provided here is the SSH url. 
-Open the project in your favourite IDE, preferrably Intellij IDEA, then cd into the root project folder using the command:
-cd .\exchange_rate_services\ 
-Below is the link to my .env file containing the project environment variables:
-[The .env project file](git)
-Click on Download to get the file.
-With the .env file added to the project root directory, (exchange_rate_services), you will now be able to run the rate service followed by the main successfully and test the endpoints via the postman workspace whose link is shared below:
-[Exchange Rate Services Workspace](https://karria-team.postman.co/workspace/My-Projects~239a85ae-f249-4dc9-9d4f-2e4d860054bb/request/36678553-611f9db0-e40c-4e47-883d-dc36e087a11f?action=share&creator=36678553&ctx=documentation&active-environment=36678553-5d19a35a-4feb-432c-bd9f-0b56dfa99648)
-
-### Running the Application with Docker Compose
-This project is fully containerized using Docker and Docker Compose.
-Bofore moving on, ensure you have Docker Desktop installed on your machine and you have a Dockerhub Account.
-Follow the steps below to build and run both services along with a PostgreSQL database:
-First, run the command below when in the project root directory:
-docker-compose up --build   
-The command will:
-- Build the rate-service and main-service Docker images.
-- Spin up rate-service, main-service, and a PostgreSQL container.
-- Automatically apply the schema.sql file (for conversions table) through volume mounting or startup script.
-Once all containers are running, you can verify the services are up and running by moving on to the next section.
-To stop all running containers, run: docker-compose down
-Key points to note:
-- All configuration values (e.g., database credentials, ports, API base URLs) are externalized using the .env file.
-- You may inspect the docker-compose.yml and Dockerfile in each service folder for detailed setup.
-- PostgreSQL stores conversion records in the conversions table, created using schema.sql.
-
-### Postman Testing instructions
-With both services running in your IDE, head over to the Status folder and test the rate service and main service status endpoints, which are Health check endpoints for both services. 
-To test an endpoint, click the blue button indicated "Send". To copy a token, under the Send button, look for a link written "Authorization". Click on it, then paste the token in the Bearer token section.
-Head over to the Auth folder and use the Register endpoints to register then use the User Login endpoint to login as a registred user. Copy the token. 
-In the Internal folder, Paste the copied token to test the Fast Exchange Rates endpoint. Do the same for the Rate Exchange API. 
-Finally, head over to Convert Currency POST endpoint and copy the token there too. Test the endpoint to see the returned converted currency. 
 
 ---
 

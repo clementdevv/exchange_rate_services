@@ -1,7 +1,6 @@
 package com.anvil_shield.main_service.filter;
 
 
-
 import com.anvil_shield.main_service.service.AppUserDetailsService;
 import com.anvil_shield.main_service.util.JwtUtil;
 import jakarta.servlet.FilterChain;
@@ -50,12 +49,10 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         //2. If not found in header, check cookies
         if (jwt == null) {
             Cookie[] cookies = request.getCookies();
-            if (cookies != null) {
-                for (Cookie cookie : cookies) {
-                    if ("jwt".equals(cookie.getName())) {
-                        jwt = cookie.getValue();
-                        break;
-                    }
+            for (Cookie cookie : cookies) {
+                if ("jwt".equals(cookie.getName())) {
+                    jwt = cookie.getValue();
+                    break;
                 }
             }
         }

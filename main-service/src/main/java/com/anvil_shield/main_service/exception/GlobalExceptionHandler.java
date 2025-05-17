@@ -16,7 +16,7 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(AccessDeniedException.class)
-    public ResponseEntity<?> handleAccessDenied(java.nio.file.AccessDeniedException exception){
+    public ResponseEntity<?> handleAccessDenied(AccessDeniedException exception){
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of(
                 "error", true,
                 "message", exception.getMessage()

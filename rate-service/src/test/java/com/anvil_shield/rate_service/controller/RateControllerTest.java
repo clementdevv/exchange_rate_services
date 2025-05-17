@@ -5,7 +5,6 @@ import com.anvil_shield.rate_service.security.NoSecurityWebFluxConfig;
 import com.anvil_shield.rate_service.service.RateExchangeService;
 
 import org.springframework.context.annotation.Import;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import reactor.core.publisher.Mono;
 import java.util.Map;
 
@@ -13,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import static org.mockito.ArgumentMatchers.anyString;
@@ -24,7 +24,7 @@ public class RateControllerTest {
     @Autowired
     private WebTestClient webTestClient;
 
-    @MockitoBean
+    @MockBean
     private RateExchangeService rateExchangeService;
 
     @Test

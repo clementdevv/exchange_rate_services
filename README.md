@@ -1,25 +1,26 @@
 
-# Exchange Rate Services
-### A Currency Conversion Microservices Project
+# Exchange Rate Services.
+### A Currency Conversion Microservices Project.
 
 This is a Java Spring Boot-based microservices application that allows real-time currency conversion using exchange rates from Exchange Rates API, the API resource is available at https://exchangeratesapi.io/. It demonstrates inter-service communication, RESTful development, JDBC-based database persistence, and Docker-based deployment.
 
 ---
 
-## Project Set up and Testing Instructions instructions
-1. Before following these instructions, ensure you have a Github account set up already and Git installed in your machine.
-2. To set up the project, first clone the repository available at [exchange_rate_services](https://github.com/clementdevv/exchange_rate_services), by clicking the **Code** button on github, then copy the three provided urls to your clipboard. Below are the three urls:
-  - SSH: [Clone via SSH](git@github.com:ianshulx/Django-Projects-for-beginners.git)
-  - HTTPS: [Clone via https](https://github.com/ianshulx/Django-Projects-for-beginners.git)
-  - Github CLI: [](gh repo clone ianshulx/Django-Projects-for-beginners)
-3. Set up and create the folder you wish to clone your project in and then open your terminal while in that directory (that folder). Run the command: git clone [The url you copied](https://github.com/clementdevv/exchange_rate_services.git) and press enter. The one I've provided here is the **SSH url**. 
-4. Open the project in your favourite IDE, preferrably Intellij IDEA, then cd into the root project folder using the command:
-  ```
-   cd .\exchange_rate_services\
-  ```
-5. Below is the link to my .env file containing the project environment variables:
-   - [The .env project file](git)
-6. Click on Download to get the file. The file is the **.env** file to be added to the project root directory, (exchange_rate_services).
+## Project Set up and Testing Instructions.
+1. To set up the project, first clone the repository using any of the below commands, within the directory you wish to have the project:
+  - Clone via SSH:
+    ```
+    git clone git@github.com:clementdevv/exchange_rate_services.git
+    ```
+  - Clone via HTTPS:
+    ```
+    git clone https://github.com/clementdevv/exchange_rate_services.git
+    ```
+  - Clone via Github CLI:
+    ```
+    git clone gh repo clone clementdevv/exchange_rate_services
+    ```
+2. Open the project in your favourite IDE, preferrably Intellij IDEA.
 - You will now be able to run the rate service followed by the main service successfully and test the endpoints via the postman workspace whose link is shared below:
 [Exchange Rate Services Workspace](https://karria-team.postman.co/workspace/My-Projects~239a85ae-f249-4dc9-9d4f-2e4d860054bb/request/36678553-611f9db0-e40c-4e47-883d-dc36e087a11f?action=share&creator=36678553&ctx=documentation&active-environment=36678553-5d19a35a-4feb-432c-bd9f-0b56dfa99648)
 

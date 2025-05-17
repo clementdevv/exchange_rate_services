@@ -103,7 +103,7 @@ This project is fully containerized using Docker and Docker Compose.
 Bofore moving on, ensure you have Docker Desktop installed on your machine and you have a Dockerhub Account.
 Follow the steps below to build and run both services along with a PostgreSQL database:
 First, run the command below when in the project root directory:
-docker-compose up --build
+docker-compose up --build   
 The command will:
 - Build the rate-service and main-service Docker images.
 - Spin up rate-service, main-service, and a PostgreSQL container.

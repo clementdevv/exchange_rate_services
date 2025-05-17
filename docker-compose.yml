@@ -1,43 +1,60 @@
+version: '3.8'
+
 services:
   postgres-db:
-    image: postgres:15
+    image: postgres:latest
+    container_name: postgres-db
     environment:
-      POSTGRES_DB: exchangeratedb
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: postgresql
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     networks:
       - backend
 
   rate-service:
     build:
       context: ./rate-service
-      dockerfile: Dockerfile
     image: clementdevv/exchange-rate-services:rate-service
+    container_name: rate-service
     ports:
       - "8081:8081"
-    depends_on: []
     env_file:
       - ./.env
+    depends_on:
+      postgres-db:
+        condition: service_healthy
     networks:
       - backend
 
   main-service:
     build:
       context: ./main-service
-      dockerfile: Dockerfile
     image: clementdevv/exchange-rate-services:main-service
+    container_name: main-service
     ports:
       - "8080:8080"
-    depends_on:
-      - rate-service
-      - postgres-db
     env_file:
       - ./.env
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+      rate-service:
+        condition: service_started
     networks:
       - backend
 
 networks:
   backend:
     driver: bridge
+
+volumes:
+  postgres_data:

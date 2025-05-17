@@ -93,7 +93,7 @@ Set up and create the folder you wish to clone your project in and then open you
 Open the project in your favourite IDE, preferrably Intellij IDEA, then cd into the root project folder using the command:
 cd .\exchange_rate_services\ 
 Below is the link to my .env file containing the project environment variables:
-[The .env project file](https://drive.google.com/file/d/1l_exXyMXqZnKrmJcQu7aQZlio6twZiH6/view?usp=sharing)
+[The .env project file](git)
 Click on Download to get the file.
 With the .env file added to the project root directory, (exchange_rate_services), you will now be able to run the rate service followed by the main successfully and test the endpoints via the postman workspace whose link is shared below:
 [Exchange Rate Services Workspace](https://karria-team.postman.co/workspace/My-Projects~239a85ae-f249-4dc9-9d4f-2e4d860054bb/request/36678553-611f9db0-e40c-4e47-883d-dc36e087a11f?action=share&creator=36678553&ctx=documentation&active-environment=36678553-5d19a35a-4feb-432c-bd9f-0b56dfa99648)
@@ -103,7 +103,7 @@ This project is fully containerized using Docker and Docker Compose.
 Bofore moving on, ensure you have Docker Desktop installed on your machine and you have a Dockerhub Account.
 Follow the steps below to build and run both services along with a PostgreSQL database:
 First, run the command below when in the project root directory:
-docker-compose up --build
+docker-compose up --build   
 The command will:
 - Build the rate-service and main-service Docker images.
 - Spin up rate-service, main-service, and a PostgreSQL container.

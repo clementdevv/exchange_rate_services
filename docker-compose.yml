@@ -1,10 +1,10 @@
 services:
   postgres-db:
-    image: postgres:15
+    image: 'postgres:latest'
     environment:
-      POSTGRES_DB: exchangeratedb
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
+      - 'POSTGRES_DB=postgresql'
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_PASSWORD=postgres'
     ports:
       - "5432:5432"
     networks:
@@ -13,18 +13,20 @@ services:
   rate-service:
     build:
       context: ./rate-service
+      dockerfile: Dockerfile
     image: clementdevv/exchange-rate-services:rate-service
     ports:
       - "8081:8081"
     depends_on: []
     env_file:
-      - ./rate-service/.env
+      - ./.env
     networks:
       - backend
 
   main-service:
     build:
       context: ./main-service
+      dockerfile: Dockerfile
     image: clementdevv/exchange-rate-services:main-service
     ports:
       - "8080:8080"
@@ -32,7 +34,7 @@ services:
       - rate-service
       - postgres-db
     env_file:
-      - ./main-service/.env
+      - ./.env
     networks:
       - backend
 
